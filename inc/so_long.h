@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/04/19 18:22:40 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:54:26 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ typedef struct	s_data {
 	int		line_length;
 	int 	endian;
 }				t_data;
+
+typedef struct	s_ptr {
+	void *mlx;
+	void *win;
+}				t_ptr;
 
 #endif
