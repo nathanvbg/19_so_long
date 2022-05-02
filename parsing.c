@@ -6,11 +6,18 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/02 16:05:19 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/02 17:19:44 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/so_long.h"
+
+int	ft_exit(char *str)
+{
+	ft_putchar(str);
+	printf("TESST\n");
+	return (-1);
+}
 
 char	**ft_parsing(char *path)
 {
@@ -38,6 +45,55 @@ char	**ft_parsing(char *path)
 		i++;
 	}
 	return (map);
+}
+
+int	check_map_ouverte_2(char **map, int x_length, int y_length)
+{
+	int i;
+
+	i = 0;
+	while(i < y_length)//gauche
+	{
+		if (map[i][0] != '1')
+			return (ft_exit("Error\nMap ouverte\n"));
+		i++;
+	}
+	i = 0;
+	while(i < y_length)//droite
+	{
+		if (map[i][x_length - 1] != '1')
+			return (ft_exit("Error\nMap ouverte\n"));
+		i++;
+	}
+	return (1);
+}
+
+int	check_map_ouverte_1(char **map)
+{
+	int	j;
+	int	x_length;
+	int	y_length;
+
+	j = 0;
+	x_length = ft_strlen(map[0]);
+	while (map[y_length])
+		y_length++;
+	while (j < x_length)//haut
+	{
+		if (map[0][j] != '1')
+			return (ft_exit("Error\nMap ouverte\n"));
+		j++;
+	}
+	j = 0;
+	while (j < x_length)//bas
+	{
+		if (map[y_length - 1][j] != '1')
+			return (ft_exit("Error\nMap ouverte\n"));
+		j++;
+	}
+	if (check_map_ouverte_2(map, x_length, y_length) == -1)
+		return (-1);
+	return (1);
 }
 
 int	check_map_2(char **map)
@@ -111,6 +167,8 @@ int	check_map(char **map)
 	if (check_map_1(map) == -1)
 		return (-1);
 	if (check_map_2(map) == -1)
+		return (-1);
+	if (check_map_ouverte_1(map) == -1)
 		return (-1);
 	return (1);
 }

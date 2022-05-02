@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/02 15:55:35 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:20:38 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,27 @@ int	ft_key(int key, t_ptr *ptr)
 	if (key == 53)
 	{
 		mlx_destroy_window(ptr->mlx, ptr->win);
+		return (0);
 	}
-	return (0);
+	return (1);
+}
+
+int	ft_processus(t_ptr *ptr, t_data *img, t_img *xpm)
+{
+	xpm->ptr = NULL;
+	ptr->mlx = mlx_init();
+	ptr->win = mlx_new_window(ptr->mlx, 1000, 800, "yes");
+	printf("xpm = %p\n", xpm->ptr);
+	xpm->ptr = mlx_xpm_file_to_image(ptr->mlx, "./img/goomba.xpm", &xpm->width, &xpm->height);
+	printf("xpm = %p\n", xpm->ptr);
+	img->img = mlx_new_image(ptr->mlx, 1000, 800);
+	img->addr = mlx_get_data_addr(img->img, &img->bbp, &img->line_length, &img->endian);
+	lets_go(img);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, img->img, 0, 0);
+	if (mlx_hook(ptr->win, 2, 1L<<0, ft_key, ptr) == 0)
+		return (0);
+	mlx_loop(ptr->mlx);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -72,17 +91,6 @@ int	main(int ac, char **av)
 	map = ft_parsing(av[1]);
 	if (check_map(map) == -1)
 		return (1);
-	xpm.ptr = NULL;
-	ptr.mlx = mlx_init();
-	ptr.win = mlx_new_window(ptr.mlx, 1000, 800, "yes");
-	printf("xpm = %p\n", xpm.ptr);
-	xpm.ptr = mlx_xpm_file_to_image(ptr.mlx, "./img/goomba.xpm", &xpm.width, &xpm.height);
-	printf("xpm = %p\n", xpm.ptr);
-	img.img = mlx_new_image(ptr.mlx, 1000, 800);
-	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_length, &img.endian);
-	lets_go(&img);
-	mlx_put_image_to_window(ptr.mlx, ptr.win, img.img, 0, 0);
-	mlx_hook(ptr.win, 2, 1L<<0, ft_key, &ptr);
-	mlx_loop(ptr.mlx);
+	ft_processus(&ptr, &img, &xpm);
 	return (0);
 }
