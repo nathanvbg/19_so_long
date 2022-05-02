@@ -6,11 +6,23 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/04/19 19:02:53 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:55:35 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
+
+void	ft_putchar(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 
 void	my_pixel_put(t_data *img, int x, int y, int color)
 {
@@ -43,21 +55,34 @@ int	ft_key(int key, t_ptr *ptr)
 {
 	printf("%d\n", key);
 	if (key == 53)
+	{
 		mlx_destroy_window(ptr->mlx, ptr->win);
+	}
 	return (0);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_ptr 	ptr;
 	t_data	img;
-
+	t_img	xpm;
+	char 	**map;
+	
+	ac = 3;
+	map = ft_parsing(av[1]);
+	if (check_map(map) == -1)
+		return (1);
+	xpm.ptr = NULL;
 	ptr.mlx = mlx_init();
 	ptr.win = mlx_new_window(ptr.mlx, 1000, 800, "yes");
+	printf("xpm = %p\n", xpm.ptr);
+	xpm.ptr = mlx_xpm_file_to_image(ptr.mlx, "./img/goomba.xpm", &xpm.width, &xpm.height);
+	printf("xpm = %p\n", xpm.ptr);
 	img.img = mlx_new_image(ptr.mlx, 1000, 800);
 	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_length, &img.endian);
 	lets_go(&img);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img.img, 0, 0);
 	mlx_hook(ptr.win, 2, 1L<<0, ft_key, &ptr);
 	mlx_loop(ptr.mlx);
+	return (0);
 }
