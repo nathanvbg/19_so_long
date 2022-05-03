@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/03 14:01:55 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:14:17 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct	s_all {
 	t_ptr ptr;
 	t_img xpm;
 	t_data data;
+	char **map;
 } 				t_all;
 
 //parsing.c
