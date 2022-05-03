@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/02 15:56:16 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/03 13:51:37 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 
-typedef struct	s_data {
+typedef struct	s_all {
+	s_ptr mlx;
+	s_img xpm;
+	s_data data;
+} 				t_all;
+
+typedef struct s_data {
 	void 	*img;
 	char 	*addr;
 	int 	bbp;
