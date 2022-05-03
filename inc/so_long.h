@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/03 14:14:17 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/03 15:34:17 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,20 @@ typedef struct	s_ptr {
 	void *win;
 }				t_ptr;
 
-typedef struct s_img {
+typedef struct s_text {
 	void	*ptr;
+	void	*addr;
 	int		width;
 	int		height;
 	char	*path;
-}			t_img;
+	int		bbp;
+	int		line_length;
+	int		endian;
+}			t_text;
 
 typedef struct	s_all {
 	t_ptr ptr;
-	t_img xpm;
+	t_text text;
 	t_data data;
 	char **map;
 } 				t_all;
