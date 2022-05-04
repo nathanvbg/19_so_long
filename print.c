@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:43:09 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 15:24:23 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:20:53 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	select_char(char c, int i, int j, t_all *d)
 {
-	if (c == '0')
+	if (i == d->map.pos_y && j == d->map.pos_x)
+		mlx_put_image_to_window(d->ptr.mlx, d->ptr.win, d->text_player.ptr, j * 40, i * 40);
+	else if (c == '0' || c == 'P')
 		mlx_put_image_to_window(d->ptr.mlx, d->ptr.win, d->text_floor.ptr, j * 40, i * 40);
 	else if (c == '1')
 		mlx_put_image_to_window(d->ptr.mlx, d->ptr.win, d->text_wall.ptr, j * 40, i * 40);
 	else if (c == 'C')
 		mlx_put_image_to_window(d->ptr.mlx, d->ptr.win, d->text_col.ptr, j * 40, i * 40);
-	else if (c == 'P')
-		mlx_put_image_to_window(d->ptr.mlx, d->ptr.win, d->text_player.ptr, j * 40, i * 40);
+	
 	else if (c == 'E')
 		mlx_put_image_to_window(d->ptr.mlx, d->ptr.win, d->text_exit.ptr, j * 40, i * 40);
 }
@@ -43,13 +44,13 @@ void	print_screen(t_all *d)
 
 	i = 0;
 	j = 0;
-	while (d->map[i])
+	while (d->map.map[i])
 	{
 		j = 0;
-		while (d->map[i][j])
+		while (d->map.map[i][j])
 		{
-			select_char(d->map[i][j], i, j, d);
-			printf("%c", d->map[i][j]);
+			select_char(d->map.map[i][j], i, j, d);
+			printf("%c", d->map.map[i][j]);
 			j++;
 		}
 		printf("\n");

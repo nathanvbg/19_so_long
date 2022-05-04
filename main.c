@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 15:00:24 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:27:16 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,7 @@ void	my_pixel_put(t_data *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	ft_key(int key, t_all *d)
-{
-	printf("%d\n", key);
-	if (key == 53)
-	{
-		mlx_destroy_window(d->ptr.mlx, d->ptr.win);
-		return (0);
-	}
-	return (1);
-}
+
 
 int	ft_processus(t_all *d)
 {
@@ -63,8 +54,8 @@ int	main(int ac, char **av)
 	t_all	d;
 	
 	ac = 3;
-	d.map = ft_parsing(av[1]);
-	if (check_map(d.map) == -1)
+	d.map.map = ft_parsing(av[1]);
+	if (check_map(d.map.map, &d) == -1)
 		return (1);
 	ft_processus(&d);
 	return (0);
