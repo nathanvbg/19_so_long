@@ -6,11 +6,11 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:43:09 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 16:20:53 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:19:47 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/so_long.h"
+#include "../inc/so_long.h"
 
 void	select_char(char c, int i, int j, t_all *d)
 {
