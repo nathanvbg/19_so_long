@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/03 17:19:55 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/04 15:20:56 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct	s_all {
 	t_ptr ptr;
 	t_text text_floor;
 	t_text text_wall;
+	t_text text_col;
+	t_text text_exit;
+	t_text text_player;
 	t_data data;
 	char **map;
 } 				t_all;
@@ -59,5 +62,6 @@ void	ft_putchar(char *str);
 
 //print.c
 void	print_screen(t_all *d);
+void	init_texture(t_all *d);
 
 #endif

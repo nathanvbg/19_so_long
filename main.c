@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/03 17:36:44 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/04 15:00:24 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ int	ft_processus(t_all *d)
 
 	d->ptr.mlx = mlx_init();
 	d->ptr.win = mlx_new_window(d->ptr.mlx, 1000, 800, "yes");
-	d->text_floor.ptr = mlx_xpm_file_to_image(d->ptr.mlx, "/Users/naverbru/Desktop/so_long/text/floor_1.xpm", &d->text_floor.width, &d->text_floor.height);
-	d->text_wall.ptr = mlx_xpm_file_to_image(d->ptr.mlx, "/Users/naverbru/Desktop/so_long/text/floor_1.xpm", &d->text_wall.width, &d->text_wall.height);
+	init_texture(d);
 	print_screen(d);
-	printf("hello\n");
-	//if (mlx_hook(d->ptr.win, 2, 1L<<0, ft_key, d) == 0)
-	//	return (0);
+	if (mlx_hook(d->ptr.win, 2, 1L<<0, ft_key, d) == 0)
+		return (0);
 	mlx_loop(d->ptr.mlx);
 	return (1);
 }
