@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:43:21 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 13:15:30 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:28:56 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_exit(t_all *d, char *str)
 
 void	ft_init(t_all *d)
 {
+	d->compteur = 0;
 	d->data.addr = NULL;
 	d->map.map = NULL;
 	d->text_floor.path = NULL;

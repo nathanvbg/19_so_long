@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 13:21:08 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:04:42 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct	s_all {
 	t_text 	text_player;
 	t_data 	data;
 	t_map	map;
+	int		compteur;
 } 				t_all;
 
 //check_1.c
@@ -80,9 +81,11 @@ void	ft_exit(t_all *d, char *str);
 //main.c
 int		ft_processus(t_all *d);
 char	**ft_parsing(char *path);
+int		red_cross(t_all *d);
 
 //utils.c
 void	ft_putchar(char *str);
+char	*ft_itoa(int nb);
 
 //print.c
 void	print_screen(t_all *d);

@@ -6,11 +6,17 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 13:17:08 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:05:05 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+int	red_cross(t_all *d)
+{
+	ft_exit(d, "");
+	return (0);
+}
 
 int	ft_processus(t_all *d)
 {
@@ -21,8 +27,8 @@ int	ft_processus(t_all *d)
 	d->ptr.win = mlx_new_window(d->ptr.mlx, d->ptr.win_height, d->ptr.win_width, "yes");
 	init_texture(d);
 	print_screen(d);
-	if (mlx_hook(d->ptr.win, 2, 1L<<0, ft_key, d) == 0)
-		return (0);
+	mlx_hook(d->ptr.win, 2, 1L<<0, ft_key, d);
+	mlx_hook(d->ptr.win, 17, 0, red_cross, d);
 	mlx_loop(d->ptr.mlx);
 	return (1);
 }
@@ -43,9 +49,12 @@ char	**ft_parsing(char *path)
 		gnl = get_next_line(fd);
 		if (gnl == NULL)
 			break ;
+		temp = line;
 		line = ft_strjoin(line, gnl);
+		//free(temp);
 	}
 	map = ft_split(line, '\n');
+	//free(line);
 	int i = 0;
 	return (map);
 }
