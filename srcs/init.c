@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:43:21 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 15:49:46 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:03:30 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_exit(t_all *d, char *str)
 {
-	ft_putchar(str);
 	int	i;
 
 	i = 0;
+	ft_putchar(str);
 	while (d->map.map[i])
 	{
 		ft_free(&d->map.map[i]);

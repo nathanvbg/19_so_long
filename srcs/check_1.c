@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 16:52:59 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:55:10 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	check_map_ouverte_2(t_all *d, int x_length, int y_length)
 	while (i < y_length)
 	{
 		if (d->map.map[i][0] != '1')
-			ft_exit(d, "no\n");
+			ft_exit(d, "Error\nMap not closed");
 		i++;
 	}
 	i = 0;
 	while (i < y_length)
 	{
 		if (d->map.map[i][x_length - 1] != '1')
-			ft_exit(d, "no\n");
+			ft_exit(d, "Error\nMap not closed");
 		i++;
 	}
 }
@@ -46,14 +46,14 @@ void	check_map_ouverte_1(t_all *d)
 	while (j < x_length)
 	{
 		if (d->map.map[0][j] != '1')
-			ft_exit(d, "no\n");
+			ft_exit(d, "Error\nMap not closed");
 		j++;
 	}
 	j = 0;
 	while (j < x_length)
 	{
 		if (d->map.map[y_length - 1][j] != '1')
-			ft_exit(d, "no\n");
+			ft_exit(d, "Error\nMap not closed");
 		j++;
 	}
 	check_map_ouverte_2(d, x_length, y_length);
