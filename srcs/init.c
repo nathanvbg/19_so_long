@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:43:21 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 13:28:56 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 15:49:46 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,7 @@ void	ft_init(t_all *d)
 	d->text_col.path = NULL;
 	d->text_exit.path = NULL;
 	d->text_player.path = NULL;
+	d->check.e = 0;
+	d->check.c = 0;
+	d->check.p = 0;
 }

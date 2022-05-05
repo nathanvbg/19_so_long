@@ -6,137 +6,114 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 13:23:52 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:52:59 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	check_map_ouverte_2(char **map, int x_length, int y_length)
+void	check_map_ouverte_2(t_all *d, int x_length, int y_length)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < y_length)//gauche
+	while (i < y_length)
 	{
-		if (map[i][0] != '1')
-			return (-1);
+		if (d->map.map[i][0] != '1')
+			ft_exit(d, "no\n");
 		i++;
 	}
 	i = 0;
-	while(i < y_length)//droite
+	while (i < y_length)
 	{
-		if (map[i][x_length - 1] != '1')
-			return (-1);
+		if (d->map.map[i][x_length - 1] != '1')
+			ft_exit(d, "no\n");
 		i++;
 	}
-	return (1);
 }
 
-int	check_map_ouverte_1(char **map)
+void	check_map_ouverte_1(t_all *d)
 {
 	int	j;
 	int	x_length;
 	int	y_length;
 
 	j = 0;
-	x_length = ft_strlen(map[0]);
-	while (map[y_length])
+	y_length = 0;
+	x_length = ft_strlen(d->map.map[0]);
+	while (d->map.map[y_length])
 		y_length++;
-	while (j < x_length)//haut
+	while (j < x_length)
 	{
-		if (map[0][j] != '1')
-			return (-1);
+		if (d->map.map[0][j] != '1')
+			ft_exit(d, "no\n");
 		j++;
 	}
 	j = 0;
-	while (j < x_length)//bas
+	while (j < x_length)
 	{
-		if (map[y_length - 1][j] != '1')
-			return (-1);
+		if (d->map.map[y_length - 1][j] != '1')
+			ft_exit(d, "no\n");
 		j++;
 	}
-	if (check_map_ouverte_2(map, x_length, y_length) == -1)
-		return (-1);
-	return (1);
+	check_map_ouverte_2(d, x_length, y_length);
 }
 
-int	check_map_2(char **map)
+void	check_map_2(t_all *d)
 {
 	int	i;
 	int	j;
-	int	check_e;
-	int	check_p;
-	int	check_c;
 
 	i = 0;
-	check_e = 0;
-	check_p = 0;
-	check_c = 0;
-	while (map[i])
+	while (d->map.map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (d->map.map[i][j])
 		{
-			if (map[i][j] == 'E')
-				check_e++;
-			if (map[i][j] == 'P')
-				check_p++;
-			if (map[i][j] == 'C')
-				check_c++;
+			if (d->map.map[i][j] == 'E')
+				d->check.e += 1;
+			if (d->map.map[i][j] == 'P')
+				d->check.p += 1;
+			if (d->map.map[i][j] == 'C')
+				d->check.c += 1;
 			j++;
 		}
 		i++;
 	}
-	if (check_e != 1 || check_p != 1 || check_c < 1)
-	{
-		ft_putchar("Error\nStart/end position error or collectible error\n");
-		return(-1);
-	}
-	return (1);
+	if (d->check.e != 1 || d->check.p != 1 || d->check.c < 1)
+		ft_exit(d, "Error\nStart/end position error or collectible error\n");
 }
 
-int	check_map_1(char **map)
+void	check_map_1(t_all *d)
 {
 	int	i;
 	int	j;
 	int	line_length;
 
 	i = 0;
-	line_length = ft_strlen(map[0]);
-	while (map[i])
+	line_length = ft_strlen(d->map.map[0]);
+	while (d->map.map[i])
 	{
-		if (ft_strlen(map[i]) != line_length)
-		{
-			ft_putchar("Error\nNot a rectangle\n");
-			return (-1);
-		}
+		if (ft_strlen(d->map.map[i]) != line_length)
+			ft_exit(d, "Error\nNot a rectangle\n");
 		j = 0;
-		while (map[i][j])
+		while (d->map.map[i][j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'E' 
-				&& map[i][j] != 'C' && map[i][j] != 'P')
-			{
-				ft_putchar("Error\nWrong character\n");
-				return(-1);
-			}
+			if (d->map.map[i][j] != '1' && d->map.map[i][j] != '0'
+				&& d->map.map[i][j] != 'E' && d->map.map[i][j] != 'C'
+				&& d->map.map[i][j] != 'P')
+				ft_exit(d, "Error\nWrong character\n");
 			j++;
 		}
 		i++;
 	}
-
-	return (1);
 }
 
-int	check_map(char **map, t_all *d)
+void	check_map(t_all *d)
 {
-	if (check_map_1(map) == -1)
-		return (-1);
-	if (check_map_2(map) == -1)
-		return (-1);
-	if (check_map_ouverte_1(map) == -1)
-		return (-1);
-	init_pos(d);
 	get_window_size(d);
-	return (1);
+	check_map_1(d);
+	check_map_2(d);
+	check_map_ouverte_1(d);
+	init_pos(d);
 }

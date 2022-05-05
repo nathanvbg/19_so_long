@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 14:05:05 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:12:52 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_processus(t_all *d)
 	int y;
 
 	d->ptr.mlx = mlx_init();
-	d->ptr.win = mlx_new_window(d->ptr.mlx, d->ptr.win_height, d->ptr.win_width, "yes");
+	d->ptr.win = mlx_new_window(d->ptr.mlx, d->ptr.win_height * 40, d->ptr.win_width * 40, "yes");
 	init_texture(d);
 	print_screen(d);
 	mlx_hook(d->ptr.win, 2, 1L<<0, ft_key, d);
@@ -43,7 +43,7 @@ char	**ft_parsing(char *path)
 
 	map = NULL;
 	fd = open(path, O_RDONLY);
-	line = "";
+	line = ft_strdup("");
 	while (1 > 0)
 	{
 		gnl = get_next_line(fd);
@@ -51,10 +51,10 @@ char	**ft_parsing(char *path)
 			break ;
 		temp = line;
 		line = ft_strjoin(line, gnl);
-		//free(temp);
+		free(temp);
 	}
 	map = ft_split(line, '\n');
-	//free(line);
+	free(line);
 	int i = 0;
 	return (map);
 }
@@ -66,8 +66,7 @@ int	main(int ac, char **av)
 	ac = 3;
 	ft_init(&d);
 	d.map.map = ft_parsing(av[1]);
-	if (check_map(d.map.map, &d) == -1)
-		return (1);
+	check_map(&d);
 	ft_processus(&d);
 	return (0);
 }

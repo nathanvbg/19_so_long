@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:13:03 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 13:15:33 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:45:44 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	get_window_size(t_all *d)
 	i = 0;
 	while (d->map.map[i])
 		i++;
-	d->ptr.win_width = i * 40;
-	d->ptr.win_height = ft_strlen(d->map.map[0]) * 40;
+	d->ptr.win_width = i;
+	d->ptr.win_height = ft_strlen(d->map.map[0]);
 	return (1);
 }
 

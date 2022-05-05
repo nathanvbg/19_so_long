@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 14:04:42 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:43:47 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ typedef struct 	s_map {
 	int		pos_y;
 }				t_map;
 
+typedef struct	s_check {
+	int e;
+	int p;
+	int c;
+}				t_check;
+
 typedef struct	s_all {
 	t_ptr 	ptr;
 	t_text 	text_floor;
@@ -59,15 +65,16 @@ typedef struct	s_all {
 	t_text 	text_player;
 	t_data 	data;
 	t_map	map;
+	t_check	check;
 	int		compteur;
 } 				t_all;
 
 //check_1.c
-int		check_map(char **map, t_all *d);
-int		check_map_ouverte_2(char **map, int x_length, int y_length);
-int		check_map_ouverte_1(char **map);
-int		check_map_2(char **map);
-int		check_map_1(char **map);
+void	check_map(t_all *d);
+void	check_map_ouverte_2(t_all *d, int x, int y);
+void	check_map_ouverte_1(t_all *d);
+void	check_map_2(t_all *d);
+void	check_map_1(t_all *d);
 
 //check_2.c
 int		check_collectible(char **map);
