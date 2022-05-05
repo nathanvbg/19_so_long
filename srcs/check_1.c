@@ -1,46 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   check_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 12:15:59 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:23:52 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-int	ft_exit(char *str)
-{
-	ft_putchar(str);
-	printf("TESST\n");
-	return (-1);
-}
-
-char	**ft_parsing(char *path)
-{
-	int		fd;
-	char	**map;
-	char	*line;
-	char	*temp;
-	char	*gnl;
-
-	map = NULL;
-	fd = open(path, O_RDONLY);
-	line = "";
-	while (1 > 0)
-	{
-		gnl = get_next_line(fd);
-		if (gnl == NULL)
-			break ;
-		line = ft_strjoin(line, gnl);
-	}
-	map = ft_split(line, '\n');
-	int i = 0;
-	return (map);
-}
 
 int	check_map_ouverte_2(char **map, int x_length, int y_length)
 {
@@ -50,14 +20,14 @@ int	check_map_ouverte_2(char **map, int x_length, int y_length)
 	while(i < y_length)//gauche
 	{
 		if (map[i][0] != '1')
-			return (ft_exit("Error\nMap ouverte\n"));
+			return (-1);
 		i++;
 	}
 	i = 0;
 	while(i < y_length)//droite
 	{
 		if (map[i][x_length - 1] != '1')
-			return (ft_exit("Error\nMap ouverte\n"));
+			return (-1);
 		i++;
 	}
 	return (1);
@@ -76,14 +46,14 @@ int	check_map_ouverte_1(char **map)
 	while (j < x_length)//haut
 	{
 		if (map[0][j] != '1')
-			return (ft_exit("Error\nMap ouverte\n"));
+			return (-1);
 		j++;
 	}
 	j = 0;
 	while (j < x_length)//bas
 	{
 		if (map[y_length - 1][j] != '1')
-			return (ft_exit("Error\nMap ouverte\n"));
+			return (-1);
 		j++;
 	}
 	if (check_map_ouverte_2(map, x_length, y_length) == -1)
@@ -156,63 +126,6 @@ int	check_map_1(char **map)
 	}
 
 	return (1);
-}
-
-int	check_collectible(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'C')
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	get_window_size(t_all *d)
-{
-	int	i;
-
-	i = 0;
-	while (d->map.map[i])
-		i++;
-	d->ptr.win_width = i * 40;
-	d->ptr.win_height = ft_strlen(d->map.map[0]) * 40;
-	return (1);
-}
-
-
-int	init_pos(t_all *d)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (d->map.map[i])
-	{
-		j = 0;
-		while (d->map.map[i][j])
-		{
-			if (d->map.map[i][j] == 'P')
-			{
-				d->map.pos_x = j;
-				d->map.pos_y = i;
-				return (1);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }
 
 int	check_map(char **map, t_all *d)

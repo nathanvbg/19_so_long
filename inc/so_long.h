@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 12:35:35 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:21:08 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,39 @@ typedef struct	s_all {
 	t_map	map;
 } 				t_all;
 
-//parsing.c
-char	**ft_parsing(char *path);
+//check_1.c
 int		check_map(char **map, t_all *d);
+int		check_map_ouverte_2(char **map, int x_length, int y_length);
+int		check_map_ouverte_1(char **map);
+int		check_map_2(char **map);
+int		check_map_1(char **map);
+
+//check_2.c
 int		check_collectible(char **map);
+int		get_window_size(t_all *d);
+int		init_pos(t_all *d);
+
+//init.c
+void	ft_init(t_all *d);
+void	ft_exit(t_all *d, char *str);
 
 //main.c
+int		ft_processus(t_all *d);
+char	**ft_parsing(char *path);
+
+//utils.c
 void	ft_putchar(char *str);
 
 //print.c
 void	print_screen(t_all *d);
 void	init_texture(t_all *d);
+void	select_char(char c, int i, int j, t_all *d);
 
 //key.c
-int	ft_key(int key, t_all *d);
+int		ft_key(int key, t_all *d);
+void	key_right(t_all *d);
+void	key_left(t_all *d);
+void	key_down(t_all *d);
+void	key_up(t_all *d);
 
 #endif

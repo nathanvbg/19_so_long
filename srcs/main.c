@@ -6,33 +6,11 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 12:35:14 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:17:08 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void	ft_putchar(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
-
-void	my_pixel_put(t_data *img, int x, int y, int color)
-{
-	char *dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bbp / 8));
-	*(unsigned int*)dst = color;
-}
-
-
 
 int	ft_processus(t_all *d)
 {
@@ -49,11 +27,35 @@ int	ft_processus(t_all *d)
 	return (1);
 }
 
+char	**ft_parsing(char *path)
+{
+	int		fd;
+	char	**map;
+	char	*line;
+	char	*temp;
+	char	*gnl;
+
+	map = NULL;
+	fd = open(path, O_RDONLY);
+	line = "";
+	while (1 > 0)
+	{
+		gnl = get_next_line(fd);
+		if (gnl == NULL)
+			break ;
+		line = ft_strjoin(line, gnl);
+	}
+	map = ft_split(line, '\n');
+	int i = 0;
+	return (map);
+}
+
 int	main(int ac, char **av)
 {
 	t_all	d;
 	
 	ac = 3;
+	ft_init(&d);
 	d.map.map = ft_parsing(av[1]);
 	if (check_map(d.map.map, &d) == -1)
 		return (1);
