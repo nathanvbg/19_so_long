@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 17:19:29 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:15:59 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ char	**ft_parsing(char *path)
 	}
 	map = ft_split(line, '\n');
 	int i = 0;
-	while (map[i])
-	{
-		printf("map = %s\n", map[i]);
-		i++;
-	}
 	return (map);
 }
 
@@ -159,6 +154,7 @@ int	check_map_1(char **map)
 		}
 		i++;
 	}
+
 	return (1);
 }
 
@@ -181,6 +177,19 @@ int	check_collectible(char **map)
 	}
 	return (1);
 }
+
+int	get_window_size(t_all *d)
+{
+	int	i;
+
+	i = 0;
+	while (d->map.map[i])
+		i++;
+	d->ptr.win_width = i * 40;
+	d->ptr.win_height = ft_strlen(d->map.map[0]) * 40;
+	return (1);
+}
+
 
 int	init_pos(t_all *d)
 {
@@ -215,5 +224,6 @@ int	check_map(char **map, t_all *d)
 	if (check_map_ouverte_1(map) == -1)
 		return (-1);
 	init_pos(d);
+	get_window_size(d);
 	return (1);
 }

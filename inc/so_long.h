@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 17:13:18 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:35:35 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ typedef struct s_data {
 }				t_data;
 
 typedef struct	s_ptr {
-	void *mlx;
-	void *win;
+	void	*mlx;
+	void 	*win;
+	int		win_width;
+	int		win_height;
 }				t_ptr;
 
 typedef struct s_text {

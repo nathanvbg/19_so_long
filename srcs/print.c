@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:43:09 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 17:19:47 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:16:19 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ void	print_screen(t_all *d)
 		while (d->map.map[i][j])
 		{
 			select_char(d->map.map[i][j], i, j, d);
-			printf("%c", d->map.map[i][j]);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 }

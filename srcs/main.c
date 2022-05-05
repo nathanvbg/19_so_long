@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 17:19:25 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:35:14 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_processus(t_all *d)
 	int y;
 
 	d->ptr.mlx = mlx_init();
-	d->ptr.win = mlx_new_window(d->ptr.mlx, 1000, 800, "yes");
+	d->ptr.win = mlx_new_window(d->ptr.mlx, d->ptr.win_height, d->ptr.win_width, "yes");
 	init_texture(d);
 	print_screen(d);
 	if (mlx_hook(d->ptr.win, 2, 1L<<0, ft_key, d) == 0)

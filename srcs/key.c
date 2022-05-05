@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 16:23:36 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/04 17:19:18 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:12:23 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	key_up(t_all *d)
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'E')
 	{
 		if (check_collectible(d->map.map) == 1)
+		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
+			exit (1);
+		}
 	}
 }
 
@@ -34,7 +37,10 @@ void	key_down(t_all *d)
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'E')
 	{
 		if (check_collectible(d->map.map) == 1)
+		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
+			exit (1);
+		}
 	}
 }
 
@@ -47,7 +53,10 @@ void	key_left(t_all *d)
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'E')
 	{
 		if (check_collectible(d->map.map) == 1)
+		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
+			exit (1);
+		}
 	}
 }
 
@@ -60,7 +69,10 @@ void	key_right(t_all *d)
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'E')
 	{
 		if (check_collectible(d->map.map) == 1)
+		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
+			exit (1);
+		}
 	}
 }
 
@@ -70,6 +82,7 @@ int	ft_key(int key, t_all *d)
 	if (key == 53)
 	{
 		mlx_destroy_window(d->ptr.mlx, d->ptr.win);
+		exit (1);
 		return (0);
 	}
 	if (key == 13)//haut
