@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 16:43:47 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:13:50 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 
 # include <mlx.h>
 # include <stdio.h>
-# include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 
 typedef struct s_data {
-	void 	*img;
-	char 	*addr;
-	int 	bbp;
+	void	*img;
+	char	*addr;
+	int		bbp;
 	int		line_length;
-	int 	endian;
+	int		endian;
 }				t_data;
 
-typedef struct	s_ptr {
+typedef struct s_ptr {
 	void	*mlx;
-	void 	*win;
+	void	*win;
 	int		win_width;
 	int		win_height;
 }				t_ptr;
@@ -44,30 +43,30 @@ typedef struct s_text {
 	int		endian;
 }			t_text;
 
-typedef struct 	s_map {
+typedef struct s_map {
 	char	**map;
 	int		pos_x;
 	int		pos_y;
 }				t_map;
 
-typedef struct	s_check {
-	int e;
-	int p;
-	int c;
+typedef struct s_check {
+	int	e;
+	int	p;
+	int	c;
 }				t_check;
 
-typedef struct	s_all {
-	t_ptr 	ptr;
-	t_text 	text_floor;
-	t_text 	text_wall;
-	t_text 	text_col;
-	t_text 	text_exit;
-	t_text 	text_player;
-	t_data 	data;
+typedef struct s_all {
+	t_ptr	ptr;
+	t_text	text_floor;
+	t_text	text_wall;
+	t_text	text_col;
+	t_text	text_exit;
+	t_text	text_player;
+	t_data	data;
 	t_map	map;
 	t_check	check;
 	int		compteur;
-} 				t_all;
+}			t_all;
 
 //check_1.c
 void	check_map(t_all *d);
@@ -93,6 +92,7 @@ int		red_cross(t_all *d);
 //utils.c
 void	ft_putchar(char *str);
 char	*ft_itoa(int nb);
+void	ft_free(char **str);
 
 //print.c
 void	print_screen(t_all *d);

@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 16:55:10 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:08:35 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	check_map_2(t_all *d)
 
 void	check_map_1(t_all *d)
 {
-	int	i;
-	int	j;
-	int	line_length;
+	int		i;
+	int		j;
+	size_t	line_length;
 
 	i = 0;
 	line_length = ft_strlen(d->map.map[0]);

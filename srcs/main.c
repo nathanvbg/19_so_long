@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 17:02:41 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:14:14 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ int	red_cross(t_all *d)
 
 int	ft_processus(t_all *d)
 {
-	int	x;
-	int	y;
-
 	d->ptr.mlx = mlx_init();
 	d->ptr.win = mlx_new_window(d->ptr.mlx, d->ptr.win_height * 40,
 			d->ptr.win_width * 40, "yes");
@@ -45,7 +42,7 @@ char	**ft_parsing(char *path)
 	map = NULL;
 	fd = open(path, O_RDONLY);
 	line = ft_strdup("");
-	while (1 > 0)
+	while (1)
 	{
 		gnl = get_next_line(fd);
 		if (gnl == NULL)
