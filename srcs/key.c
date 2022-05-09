@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 16:23:36 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/09 17:33:38 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:42:43 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	key_up(t_all *d)
 {
+	char	*str;
+
+	str = NULL;
 	if (d->map.map[d->map.pos_y - 1][d->map.pos_x] != '1')
 	{
 		d->map.pos_y -= 1;
 		d->compteur += 1;
-		ft_putchar(ft_itoa(d->compteur));
+		str = ft_itoa(d->compteur);
+		ft_putchar(str);
 		ft_putchar("\n");
+		free(str);
 	}
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'C')
 		d->map.map[d->map.pos_y][d->map.pos_x] = '0';
@@ -35,12 +40,17 @@ void	key_up(t_all *d)
 
 void	key_down(t_all *d)
 {
+	char	*str;
+
+	str = NULL;
 	if (d->map.map[d->map.pos_y + 1][d->map.pos_x] != '1')
 	{
 		d->map.pos_y += 1;
 		d->compteur += 1;
-		ft_putchar(ft_itoa(d->compteur));
+		str = ft_itoa(d->compteur);
+		ft_putchar(str);
 		ft_putchar("\n");
+		free(str);
 	}
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'C')
 		d->map.map[d->map.pos_y][d->map.pos_x] = '0';
@@ -56,12 +66,17 @@ void	key_down(t_all *d)
 
 void	key_left(t_all *d)
 {
+	char	*str;
+
+	str = NULL;
 	if (d->map.map[d->map.pos_y][d->map.pos_x - 1] != '1')
 	{
 		d->map.pos_x -= 1;
 		d->compteur += 1;
-		ft_putchar(ft_itoa(d->compteur));
+		str = ft_itoa(d->compteur);
+		ft_putchar(str);
 		ft_putchar("\n");
+		free(str);
 	}
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'C')
 		d->map.map[d->map.pos_y][d->map.pos_x] = '0';
@@ -77,12 +92,17 @@ void	key_left(t_all *d)
 
 void	key_right(t_all *d)
 {
+	char	*str;
+
+	str = NULL;
 	if (d->map.map[d->map.pos_y][d->map.pos_x + 1] != '1')
 	{
 		d->map.pos_x += 1;
 		d->compteur += 1;
-		ft_putchar(ft_itoa(d->compteur));
+		str = ft_itoa(d->compteur);
+		ft_putchar(str);
 		ft_putchar("\n");
+		free(str);
 	}
 	if (d->map.map[d->map.pos_y][d->map.pos_x] == 'C')
 		d->map.map[d->map.pos_y][d->map.pos_x] = '0';
