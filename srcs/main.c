@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/09 17:32:44 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:44:40 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	main(int ac, char **av)
 	ft_init(&d);
 	ft_parsing(av[1], &d);
 	check_map(&d);
-	d.ptr.mlx = mlx_init();
 	ft_processus(&d);
 	system("leaks so_long");
 	return (0);
