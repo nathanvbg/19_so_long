@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 16:23:36 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 17:03:54 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:33:38 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	key_up(t_all *d)
 		if (check_collectible(d->map.map) == 1)
 		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
-			exit (1);
+			ft_exit(d, "");
 		}
 	}
 }
@@ -49,7 +49,7 @@ void	key_down(t_all *d)
 		if (check_collectible(d->map.map) == 1)
 		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
-			exit (1);
+			ft_exit(d, "");
 		}
 	}
 }
@@ -70,7 +70,7 @@ void	key_left(t_all *d)
 		if (check_collectible(d->map.map) == 1)
 		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
-			exit (1);
+			ft_exit(d, "");
 		}
 	}
 }
@@ -91,7 +91,7 @@ void	key_right(t_all *d)
 		if (check_collectible(d->map.map) == 1)
 		{
 			mlx_destroy_window(d->ptr.mlx, d->ptr.win);
-			exit (1);
+			ft_exit(d, "");
 		}
 	}
 }
@@ -101,7 +101,7 @@ int	ft_key(int key, t_all *d)
 	if (key == 53)
 	{
 		mlx_destroy_window(d->ptr.mlx, d->ptr.win);
-		exit (1);
+		ft_exit(d, "");
 		return (0);
 	}
 	if (key == 13)

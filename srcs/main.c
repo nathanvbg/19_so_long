@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/09 15:14:14 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:32:44 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	red_cross(t_all *d)
 {
+	mlx_destroy_window(d->ptr.mlx, d->ptr.win);
 	ft_exit(d, "");
-	return (0);
+	return (1);
 }
 
 int	ft_processus(t_all *d)
 {
 	d->ptr.mlx = mlx_init();
 	d->ptr.win = mlx_new_window(d->ptr.mlx, d->ptr.win_height * 40,
-			d->ptr.win_width * 40, "yes");
+			d->ptr.win_width * 40, "so_long");
 	init_texture(d);
 	print_screen(d);
 	mlx_hook(d->ptr.win, 2, 1L << 0, ft_key, d);
@@ -31,15 +32,14 @@ int	ft_processus(t_all *d)
 	return (1);
 }
 
-char	**ft_parsing(char *path)
+void	ft_parsing(char *path, t_all *d)
 {
 	int		fd;
-	char	**map;
 	char	*line;
 	char	*temp;
 	char	*gnl;
 
-	map = NULL;
+	d->map.map = NULL;
 	fd = open(path, O_RDONLY);
 	line = ft_strdup("");
 	while (1)
@@ -49,11 +49,11 @@ char	**ft_parsing(char *path)
 			break ;
 		temp = line;
 		line = ft_strjoin(line, gnl);
+		free(gnl);
 		free(temp);
 	}
-	map = ft_split(line, '\n');
+	d->map.map = ft_split(line, '\n');
 	free(line);
-	return (map);
 }
 
 int	main(int ac, char **av)
@@ -66,8 +66,10 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ft_init(&d);
-	d.map.map = ft_parsing(av[1]);
+	ft_parsing(av[1], &d);
 	check_map(&d);
+	d.ptr.mlx = mlx_init();
 	ft_processus(&d);
+	system("leaks so_long");
 	return (0);
 }

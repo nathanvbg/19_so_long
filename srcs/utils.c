@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 13:10:06 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/09 14:10:22 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:21:52 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_free(char **str)
 {
-	if (*str != NULL)
+	if (str != NULL)
 	{
-		free(str);
-		str = NULL;
+		free(*str);
+		*str = NULL;
 	}
 }
 

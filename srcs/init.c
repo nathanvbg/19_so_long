@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:43:21 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/05 17:03:30 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:35:07 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_exit(t_all *d, char *str)
 	ft_putchar(str);
 	while (d->map.map[i])
 	{
-		ft_free(&d->map.map[i]);
+		free(d->map.map[i]);
 		i++;
 	}
 	free(d->map.map);
@@ -30,6 +30,7 @@ void	ft_exit(t_all *d, char *str)
 	ft_free(&d->text_col.path);
 	ft_free(&d->text_exit.path);
 	ft_free(&d->text_player.path);
+	system("leaks so_long");
 	exit(0);
 }
 
@@ -46,4 +47,5 @@ void	ft_init(t_all *d)
 	d->check.e = 0;
 	d->check.c = 0;
 	d->check.p = 0;
+	d->ptr.mlx = NULL;
 }
