@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:43:21 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/10 12:00:52 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:03:26 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_exit(t_all *d, char *str)
 	ft_free(&d->text_col.path);
 	ft_free(&d->text_exit.path);
 	ft_free(&d->text_player.path);
-	system("leaks so_long");
 	exit(1);
 }
 
