@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/09 17:07:17 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:33:05 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_init(t_all *d);
 void	ft_exit(t_all *d, char *str);
 
 //main.c
-int		ft_processus(t_all *d);
+void	ft_processus(t_all *d);
 void	ft_parsing(char *path, t_all *d);
 int		red_cross(t_all *d);
 

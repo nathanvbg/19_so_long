@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:20:13 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/09 15:08:35 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:54:16 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	check_map_2(t_all *d)
 		}
 		i++;
 	}
+	if (i > 35)
+		ft_exit(d, "Error\nMap too big\n");
 	if (d->check.e != 1 || d->check.p != 1 || d->check.c < 1)
 		ft_exit(d, "Error\nStart/end position error or collectible error\n");
 }
@@ -92,6 +94,8 @@ void	check_map_1(t_all *d)
 
 	i = 0;
 	line_length = ft_strlen(d->map.map[0]);
+	if (line_length > 64)
+		ft_exit(d, "Error\nMap too big\n");
 	while (d->map.map[i])
 	{
 		if (ft_strlen(d->map.map[i]) != line_length)
