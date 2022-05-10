@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:17:16 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/10 12:01:05 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:19:53 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,19 @@ void	ft_processus(t_all *d)
 	mlx_loop(d->ptr.mlx);
 }
 
-void	ft_parsing(char *path, t_all *d)
+char	*ft_parsing(char *path, t_all *d)
 {
 	int		fd;
 	char	*line;
 	char	*temp;
 	char	*gnl;
 
-	d->map.map = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		ft_exit(d, "Error\nWrong .ber file\n");
 	line = ft_strdup("");
+	if (line == NULL)
+		ft_exit(d, "Error\nMalloc Error\n");
 	while (1)
 	{
 		gnl = get_next_line(fd);
@@ -57,18 +58,15 @@ void	ft_parsing(char *path, t_all *d)
 		free(gnl);
 		free(temp);
 		if (line == NULL)
-			ft_exit(d, "ek");
+			ft_exit(d, "Error\nMalloc error\n");
 	}
-	d->map.map = ft_split(line, '\n');
-	free(line);
-	if (d->map.map == NULL)
-		ft_exit(d, "Error\nEmpty map\n");
+	return (line);
 }
 
 int	main(int ac, char **av)
 {
 	t_all	d;
-	//char	*line;
+	char	*line;
 
 	if (ac != 2)
 	{
@@ -76,7 +74,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ft_init(&d);
-	ft_parsing(av[1], &d);
+	line = ft_parsing(av[1], &d);
+	d.map.map = ft_split(line, '\n');
+	free(line);
+	if (d.map.map == NULL)
+		ft_exit(&d, "Error\nEmpty map\n");
 	check_map(&d);
 	ft_processus(&d);
 	system("leaks so_long");

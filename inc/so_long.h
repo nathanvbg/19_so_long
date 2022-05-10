@@ -6,7 +6,7 @@
 /*   By: naverbru <naverbru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:14:00 by naverbru          #+#    #+#             */
-/*   Updated: 2022/05/10 11:33:05 by naverbru         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:23:16 by naverbru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_map_1(t_all *d);
 
 //check_2.c
 int		check_collectible(char **map);
-int		get_window_size(t_all *d);
+void	get_window_size(t_all *d);
 int		init_pos(t_all *d);
 
 //init.c
@@ -86,7 +86,7 @@ void	ft_exit(t_all *d, char *str);
 
 //main.c
 void	ft_processus(t_all *d);
-void	ft_parsing(char *path, t_all *d);
+char	*ft_parsing(char *path, t_all *d);
 int		red_cross(t_all *d);
 
 //utils.c
